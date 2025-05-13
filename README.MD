@@ -1,43 +1,90 @@
-Project Overview: Magento Selenium Automation using POM
+# Magento Selenium Automation using POM
 
-The Goal of this project is to automate on a Magento e-commerce website
-(like login,product,search,add to cart,etc) using Selenium webdriver with Page Object Model(POM) Design
+This project is focused on automating an e-commerce website built on Magento using **Selenium WebDriver** in Python. I’ve used the **Page Object Model (POM)** design pattern to make the automation framework clean, reusable, and easy to maintain.
 
-POM -> Approach helps organize your test code by separating the page structure(locators and actions) from the test scripts
-making code clean, reusable, and easy to maintain
+---
 
-What is Page Object Model(POM)?
+## Project Overview
 
-Page Object Model is a design pattern that creates an object repository for web UI Elements
-It separates:
+The goal of this project is to automate some common user flows like:
 
-* Test scripts( what to test)
-* Page Classes(How to interact with the page)
+- Logging in to the website
+- Searching for products
+- Filtering and sorting results
+- Adding items to the cart
 
-Detailed Explanation of File Structure 
---------------------------------------
+All the test cases are written using **PyTest**, and the framework is structured to support future enhancements easily.
+
+---
+
+## What is Page Object Model (POM)?
+
+POM is a design pattern that helps separate the page structure (locators and actions) from the test scripts. It helps in:
+
+- Keeping the code clean and organized
+- Reusing methods across different test cases
+- Making the framework easy to scale and maintain
+
+Each page is represented by a separate Python class, which contains all the elements (locators) and actions (methods) related to that page.
+
+---
+
+## Folder Structure
+
+Here's a breakdown of how I’ve organized the project:
 
 magento_automation/
+│
+├── config/
+│ └── config.py # Stores base URL, login credentials, and browser info
+│
+├── drivers/
+│ └── chromedriver.exe # WebDriver executable for running tests
+│
+├── pages/
+│ ├── base_page.py # Common reusable methods like click(), send_keys(), etc.
+│ ├── login_page.py # Handles login actions
+│ ├── home_page.py # Actions after login (welcome message, logout, etc.)
+│ └── product_page.py # Product search, filters, add to cart, etc.
+│
+├── tests/
+│ ├── test_login.py # Verifies login functionality
+│ └── test_cart.py # Verifies that products can be added to cart
+│
+└── README.md # Project documentation
 
-config
- -> config.py
- -> Holds configuration data like base URL,login credentials, and browser settings
 
-drivers
-  -> chromedriver.exe
-  -> Stores the Webdriver executable (like chromedriver.exe or geokodriver for firefox)
+---
 
-This is the Heart of POM:
--> Each page class represents a single web page with:
-    -> Locators(how to find elements)
-    -> Methods(actions like click_login(), search_product())
+## Tools & Technologies Used
 
-  ->base_page.py -> common reusable methods like click(),send_keys(),wait_for_element()
-  ->login_page.py -> Handles login screen(input/password, click login)
-  ->home_page.py -> Handles hp actions(welcome messages, categories, logout)
-  -> Product_page.py -> Deals with product search, add to cart, filter , sort, etc
+- Python
+- Selenium WebDriver
+- PyTest
+- Git & GitHub
+- (Optional: Jenkins, Docker for CI/CD)
 
-Tests/
-   -> test_login.py - example test case using login_page
-   -> test_cart.py  - verifies product addition to cart
+---
 
+## How to Run the Project
+
+1. Clone this repo to your local system
+2. Install the dependencies using pip (I'll add a `requirements.txt` file)
+3. Add your own `chromedriver.exe` file in the drivers folder
+4. Update `config.py` with your Magento test credentials and base URL
+5. Run the tests using:
+
+
+---
+
+## Final Note
+
+This project is still a work in progress and I plan to add more test cases like checkout, user registration, etc. I’ve tried to keep it simple and readable so anyone can understand and contribute easily.
+
+If you’ve any suggestions or feedback, feel free to reach out!
+
+---
+
+**Author:**
+Ajjayya G V
+Automation Tester | Python | Selenium | PyTest | POM
